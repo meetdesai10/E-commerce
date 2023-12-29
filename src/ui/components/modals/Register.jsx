@@ -1,13 +1,33 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FormGroup, Label, Input, Button } from "reactstrap";
-
+import { BE_URL } from "../../../config";
+import { logRegAuth } from "../../../redux/features/logReg";
+import axios from "axios";
+import { toast } from "react-toastify";
 export default function Register({ logReg, setLogReg, toggle }) {
+  let dispatch = useDispatch();
   const [regData, setRegData] = useState({
     name: "",
     email: "",
     mobileNumber: "",
     password: "",
   });
+  function submitHandler() {
+    axios({
+      method: "post",
+      url: `${BE_URL}/user/signUp`,
+      data: regData,
+    })
+      .then((res) => {
+        dispatch(logRegAuth(res?.data));
+        toggle();
+        toast.success("Register Successfull");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
   return (
     <div>
       <FormGroup>
@@ -54,7 +74,7 @@ export default function Register({ logReg, setLogReg, toggle }) {
       <Button
         className="w-100 mb-3 bg-black"
         color="secondary"
-        onClick={toggle}
+        onClick={submitHandler}
       >
         Create A Account
       </Button>
