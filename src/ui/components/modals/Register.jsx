@@ -5,14 +5,18 @@ import { BE_URL } from "../../../config";
 import { logRegAuth } from "../../../redux/features/logReg";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export default function Register({ logReg, setLogReg, toggle }) {
   let dispatch = useDispatch();
+  let navigate = useNavigate();
   const [regData, setRegData] = useState({
     name: "",
     email: "",
     mobileNumber: "",
     password: "",
   });
+
   function submitHandler() {
     axios({
       method: "post",
@@ -22,10 +26,24 @@ export default function Register({ logReg, setLogReg, toggle }) {
       .then((res) => {
         dispatch(logRegAuth(res?.data));
         toggle();
-        toast.success("Register Successfull");
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Good job!",
+          title: "you registered successfully",
+          showConfirmButton: true,
+          timer: 800,
+        });
       })
       .catch((error) => {
-        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          showConfirmButton: true,
+          timer: 800,
+        });
       });
   }
   return (

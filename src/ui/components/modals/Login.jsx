@@ -2,15 +2,20 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FormGroup, Label, Input, Button } from "reactstrap";
 import { BE_URL } from "../../../config";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logRegAuth } from "../../../redux/features/logReg";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 export default function Login({ logReg, setLogReg, toggle }) {
   let dispatch = useDispatch();
-  const [logData, setLogData] = useState({
+  let navigate = useNavigate();
+
+  let [logData, setLogData] = useState({
     email: "",
     password: "",
   });
+
   function submitHandler() {
     axios({
       method: "post",
@@ -18,14 +23,26 @@ export default function Login({ logReg, setLogReg, toggle }) {
       data: logData,
     })
       .then((res) => {
-        console.log(": submitHandler -> res", res);
         dispatch(logRegAuth(res?.data));
-        toast.success("login Successfull");
-
+        navigate("/");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Good job!",
+          title: "you Logged successfully",
+          showConfirmButton: true,
+          timer: 800,
+        });
         toggle();
       })
       .catch((error) => {
-        toast.error(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+          showConfirmButton: true,
+          timer: 800,
+        });
       });
   }
   return (
@@ -39,7 +56,7 @@ export default function Login({ logReg, setLogReg, toggle }) {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="exampleEmail">Email</Label>
+        <Label for="exampleEmail">Password</Label>
         <Input
           placeholder="enter your password"
           type="text"

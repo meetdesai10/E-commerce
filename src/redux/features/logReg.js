@@ -3,7 +3,7 @@ let user = localStorage.getItem("user");
 let token = localStorage.getItem("token");
 let initialState = {
   user: user ? JSON.parse(user) : {},
-  token: token ? JSON.parse(token) : null,
+  token: token ? JSON.parse(token) : "",
 };
 let logRegSlice = createSlice({
   name: "logRegSlice",
@@ -17,7 +17,7 @@ let logRegSlice = createSlice({
     },
     logOut: (state, action) => {
       localStorage.clear();
-      state.token = null;
+      state.token = "";
       state.user = {};
     },
   },
