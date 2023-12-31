@@ -1,0 +1,93 @@
+.footerContainer {
+  display: flex;
+  align-items: center;
+  padding: 0px 40px;
+  height: 40vh;
+  margin-top: 30px;
+}
+.footerContainer .leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+.footerContainer .Title {
+  font-size: 30px;
+  font-weight: bold;
+}
+.footerContainer .leftDesc {
+  width: 70%;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: grey;
+}
+.footerContainer .icons {
+  display: flex;
+  gap: 20px;
+}
+.footerContainer .icon {
+  cursor: pointer;
+}
+.footerContainer .centerSide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+.footerContainer .centerLinks {
+  display: flex;
+  gap: 15px;
+}
+.footerContainer .links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+}
+.footerContainer .links li {
+  color: grey;
+  cursor: pointer;
+}
+.footerContainer .links li:hover {
+  color: rgb(72, 71, 71);
+}
+.footerContainer .rightSide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+.footerContainer .location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footerContainer .location .address {
+  color: grey;
+}
+.footerContainer .moNo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footerContainer .moNo .number {
+  color: grey;
+}
+.footerContainer .emailContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footerContainer .emailContainer .emailAddress {
+  color: grey;
+}
+.footerContainer .paymentsMethods {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.footerContainer .paymentsMethods img {
+  height: 30px;
+  width: 50px;
+}

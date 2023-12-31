@@ -4,7 +4,6 @@ import { FormGroup, Label, Input, Button } from "reactstrap";
 import { BE_URL } from "../../../config";
 import { logRegAuth } from "../../../redux/features/logReg";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 export default function Register({ logReg, setLogReg, toggle }) {

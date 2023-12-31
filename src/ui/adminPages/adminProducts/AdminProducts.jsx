@@ -9,11 +9,15 @@ import {
 } from "reactstrap";
 import AddProductModel from "../../components/modals/AddProductModel";
 import ProductTable from "./ProductTable.jsx/ProductTable";
+import Pagination from "./pagination/Pagination";
 export default function AdminProducts() {
   let [modal, setModal] = useState(false);
+  let [pageNumber, setPageNumber] = useState(3);
+
   let toggle = () => setModal(!modal);
   return (
     <>
+      <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
       <div className="d-flex gap-4 justify-content-end me-5 ms-5">
         <FormGroup>
           <Input
@@ -39,7 +43,7 @@ export default function AdminProducts() {
           </ModalBody>
         </Modal>
       </div>
-      <ProductTable />
+      <ProductTable pageNumber={pageNumber} />
     </>
   );
 }

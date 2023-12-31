@@ -4,7 +4,6 @@ import { FormGroup, Label, Input, Button } from "reactstrap";
 import { BE_URL } from "../../../config";
 import { useDispatch } from "react-redux";
 import { logRegAuth } from "../../../redux/features/logReg";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 export default function Login({ logReg, setLogReg, toggle }) {

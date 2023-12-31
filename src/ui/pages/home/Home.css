@@ -1,0 +1,36 @@
+.homePageContainer {
+  position: relative;
+  height: 88.6vh;
+  width: 100%;
+}
+.backGroungImageHome {
+  position: absolute;
+  background: url("../..//../../public//mainPageImages//bcImage.jpg");
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  z-index: 0;
+}
+.homePageDetails {
+  position: absolute;
+  top: 300px;
+  left: 150px;
+  z-index: 111;
+  color: #cbba9c;
+  border-left: 5px solid #cbba9c;
+  border-radius: 20px;
+  
+}
+.homePageDetails .homeBtn {
+  background-color: transparent;
+  border-radius: 0;
+  width: 150px;
+}
+.homePageDetails .homeBtn:hover {
+  background-color: white;
+  color: black;
+}

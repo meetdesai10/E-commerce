@@ -1,0 +1,28 @@
+.homePageCardContainer {
+  height: 80vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.homeCardImages {
+  filter: brightness(70%);
+  transform: scale(1);
+  transition: 0.4s all ease-in-out;
+}
+.homeCardImages:hover {
+  transform: scale(1.2);
+}
+.homePageCardDetails {
+  position: absolute;
+  bottom: 100px;
+  left: 30px;
+  color: white;
+}
+.homePageCardContainer .homeCardBtn {
+  background-color: transparent;
+  border-radius: 0;
+}
+.homePageCardContainer .homeCardBtn:hover {
+  background-color: white;
+  color: black;
+}

@@ -46,7 +46,7 @@ export default function Header() {
   }
   return (
     <>
-      <div className="headerContainer d-flex pe-5 ps-5 pt-2 pb-2 justify-content-between align-items-center ">
+      <div className="headerContainer d-flex pe-5 ps-5 pt-1 pb-1 justify-content-between align-items-center ">
         <div className="headerPages d-flex gap-5 fs-5 align-items-center">
           {userData?.user?.userType === "admin" ? (
             <>
@@ -56,8 +56,8 @@ export default function Header() {
               >
                 <img
                   src={logo}
-                  className=""
                   style={{ height: "80px" }}
+                  className=""
                   alt=""
                 />
               </NavLink>
@@ -179,9 +179,6 @@ export default function Header() {
           </NavLink>
         </div>
       </div>
-      <hr
-        style={{ height: "0.2px", border: "0.2px solid black", width: "100%" }}
-      />
     </>
   );
 }
