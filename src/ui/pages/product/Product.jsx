@@ -3,6 +3,7 @@ import Pagination from "../../components/pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import HomePagefeatureCard from "../../components/cards/homePageFeatureCard/HomePagefeatureCard";
 import { fetchProductData } from "../../../redux/features/Products";
+
 export default function Product() {
   const dispatch = useDispatch();
   let [productPageNumber, setProductPageNumber] = useState(3);

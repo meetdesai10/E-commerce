@@ -42,9 +42,9 @@ main {
 
 .crumb__prev {
   margin-right: 0.5rem;
-  cursor: w-resize;
+  cursor: pointer;
 }
 .crumb__next {
   margin-left: 0.5rem;
-  cursor: e-resize;
+  cursor: pointer;
 }

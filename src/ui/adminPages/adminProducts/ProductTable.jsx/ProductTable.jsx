@@ -5,14 +5,16 @@ import { BE_URL } from "../../../../config";
 import { fetchProductData } from "../../../../redux/features/Products";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function ProductTable({ pageNumber, tableDivRef }) {
   let [allProductData, setAllProductData] = useState([]);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProductData({ page: pageNumber, limit: 10 }));
   }, [pageNumber]);
-
+  const navigate = useNavigate();
   const data = useSelector((state) => state.ProductsSlice);
   useEffect(() => {
     if (data?.error?.length > 0) {
@@ -27,6 +29,9 @@ export default function ProductTable({ pageNumber, tableDivRef }) {
       setAllProductData(data?.productData);
     }
   }, [data]);
+  const productDetailPage = (id) => {
+    navigate(`/adminproducts/${id}`);
+  };
   return (
     <div ref={tableDivRef}>
       <Table hover>
@@ -43,7 +48,11 @@ export default function ProductTable({ pageNumber, tableDivRef }) {
         <tbody>
           {allProductData?.map((e, index) => {
             return (
-              <tr key={index}>
+              <tr
+                key={index}
+                onClick={() => productDetailPage(e?._id)}
+                style={{ verticalAlign: "middle" }}
+              >
                 <th scope="row">{index + 1}</th>
                 <th>
                   <img

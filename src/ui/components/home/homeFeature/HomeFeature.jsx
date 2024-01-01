@@ -1,7 +1,15 @@
-import React from "react";
-import HomePagefeatureCard from "../../cards/homePageFeatureCard/homePagefeatureCard";
+import React, { useEffect } from "react";
 import homePageFeatureCardData from "../../../../data/homePageFeatureCardData";
+import HomePagefeatureCard from "../../cards/homePageFeatureCard/HomePagefeatureCard";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductData } from "../../../../redux/features/Products";
 export default function HomeFeature() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProductData({ page: 1, limit: 6 }));
+  }, []);
+  const data = useSelector((state) => state?.ProductsSlice?.productData);
+  console.log(": HomeFeature -> data", data);
   return (
     <div>
       <div className="homefeatureHeader  pt-5">
@@ -26,7 +34,7 @@ export default function HomeFeature() {
       </div>
 
       <div className="w-100 d-flex justify-content-between text-center flex-wrap ps-5 pe-5">
-        {homePageFeatureCardData?.map((ele, index) => {
+        {data?.map((ele, index) => {
           return <HomePagefeatureCard key={index} ele={ele} />;
         })}
       </div>

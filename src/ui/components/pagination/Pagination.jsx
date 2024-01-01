@@ -6,14 +6,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./pagination.css";
 import { NavLink } from "react-bootstrap";
+
 export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
-  console.log(": limit", limit);
   const [pagination, setPagination] = useState([1, 2, 3, 4, 5]);
   let data = useSelector((state) =>
     Math.ceil(state?.ProductsSlice?.count / limit)
   );
-  console.log(": data", data);
-  console.log(": data", data);
+
   useEffect(() => {
     if (pageNumber >= 3 && pageNumber <= data - 2) {
       let arr = [
@@ -24,20 +23,23 @@ export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
         pageNumber + 2,
       ];
       setPagination(arr);
-    } else if (pageNumber == data) {
+    } else if (pageNumber == data || pageNumber == data - 1) {
       let arr = [data - 4, data - 3, data - 2, data - 1, data];
+      setPagination(arr);
+    } else {
+      let arr = [1, 2, 3, 4, 5];
       setPagination(arr);
     }
   }, [pageNumber]);
   return (
     <>
       <main>
-        <nav class="pagination">
-          <ul class="crumbs">
-            <li>
-              <span class="crumb crumb__prev">
+        <nav className="pagination">
+          <ul className="crumbs">
+            <li onClick={() => setPageNumber(1)}>
+              <span className="crumb crumb__prev">
                 {" "}
-                <KeyboardDoubleArrowLeft onClick={() => setPageNumber(3)} />
+                <KeyboardDoubleArrowLeft />
               </span>
             </li>
             {pagination?.map((ele, index) => {
@@ -53,14 +55,17 @@ export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
                     tableDivRef.current.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
-                  <span class="crumb crumb__prev">{ele}</span>
+                  <span className="crumb crumb__prev">{ele}</span>
                 </NavLink>
               );
             })}
 
             <li>
-              <span class="crumb crumb__next">
-                <KeyboardDoubleArrowRight onClick={() => setPageNumber(data)} />
+              <span
+                className="crumb crumb__next"
+                onClick={() => setPageNumber(data)}
+              >
+                <KeyboardDoubleArrowRight />
               </span>
             </li>
           </ul>

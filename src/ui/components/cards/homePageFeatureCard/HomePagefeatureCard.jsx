@@ -1,12 +1,24 @@
 import React from "react";
 import "./homePagefeatureCard.css";
 import { AddShoppingCart, FavoriteBorder } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 export default function HomePagefeatureCard({ ele }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="product-card">
-        <div className="product-tumb">
-          <img src={ele?.thumbnail} alt="" />
+        <div
+          className="product-tumb"
+          onClick={() => navigate(`/products/${ele?._id}`)}
+          style={{ cursor: "pointer" }}
+        >
+          <img
+            src={ele?.thumbnail}
+            alt=""
+            onClick={() => navigate(`/products/${ele?._id}`)}
+            style={{ cursor: "pointer" }}
+          />
         </div>
         <div className="product-details">
           <span className="product-catagory">{ele?.title}</span>
