@@ -7,32 +7,32 @@ import product6 from "../../public/featuresPage/product6.jpg";
 
 const featureData = [
   {
-    img: product1,
+    thumbnail: product1,
     description: "3 In 1 Numeral Watch",
     price: "1200.00",
   },
   {
-    img: product2,
+    thumbnail: product2,
     description: "Black & Red Numeral",
     price: "1200.00",
   },
   {
-    img: product3,
+    thumbnail: product3,
     description: "Black & Dial Leather Strap",
     price: "1849.00",
   },
   {
-    img: product4,
+    thumbnail: product4,
     description: "Black Dial Numeral",
     price: "4678.00",
   },
   {
-    img: product5,
+    thumbnail: product5,
     description: "Black Metal Bracelete Strap",
     price: "1974.00",
   },
   {
-    img: product6,
+    thumbnail: product6,
     description: "Black Metal Numeral",
     price: "4642.00",
   },

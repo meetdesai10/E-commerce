@@ -40,9 +40,9 @@ export default function Header() {
           timer: 800,
         });
         dispatch(logOut());
+        navigate("/");
       }
     });
-    navigate("/");
   }
   return (
     <>

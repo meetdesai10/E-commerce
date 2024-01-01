@@ -1,7 +1,6 @@
 .homepagefeatureCardContainer {
   height: 400px;
   width: 400px;
-  position: relative;
 }
 .homepagefeatureCardContainer .homepagefeatureCardimage {
   height: 100%;
@@ -9,19 +8,13 @@
   z-index: 0;
 }
 .homepagefeatureCardContainer .carAndWishlist {
-  position: absolute;
   bottom: 0;
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  padding: 0px 60px;
   transition: 0.5s all ease-in-out;
-  transform: scale(0);
   z-index: 011111;
 }
-.homepagefeatureCardContainer:hover .carAndWishlist {
-  transform: scale(1);
-}
+
 /* .homepagefeatureCardimage:hover .carAndWishlist {
   transform: scale(1);
 } */

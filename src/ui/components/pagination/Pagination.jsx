@@ -5,11 +5,22 @@ import {
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function ({ pageNumber, setPageNumber }) {
-  const [pagination, setPagination] = useState([1, 2, 3, 4, 5]);
+export default function ({ limit, pageNumber, setPageNumber }) {
   let data = useSelector((state) =>
-    Math.ceil(state?.ProductsSlice?.count / 10)
+    Math.ceil(state?.ProductsSlice?.count / limit)
   );
+  const [pagination, setPagination] = useState(
+    pageNumber >= 3 && pageNumber <= data - 2
+      ? [
+          pageNumber - 2,
+          pageNumber - 1,
+          pageNumber,
+          pageNumber + 1,
+          pageNumber + 2,
+        ]
+      : [1, 2, 3, 4, 5]
+  );
+
   console.log(": data", data);
   useEffect(() => {
     if (pageNumber >= 3 && pageNumber <= data - 2) {
