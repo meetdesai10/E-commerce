@@ -40,7 +40,7 @@ export default function Login({ logReg, setLogReg, toggle }) {
           title: "Oops...",
           text: error.message,
           showConfirmButton: true,
-          timer: 800,
+          timer: 1500,
         });
       });
   }

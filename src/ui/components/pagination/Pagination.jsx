@@ -4,13 +4,15 @@ import {
 } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-
+import "./pagination.css";
+import { NavLink } from "react-bootstrap";
 export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
   console.log(": limit", limit);
   const [pagination, setPagination] = useState([1, 2, 3, 4, 5]);
   let data = useSelector((state) =>
     Math.ceil(state?.ProductsSlice?.count / limit)
   );
+  console.log(": data", data);
   console.log(": data", data);
   useEffect(() => {
     if (pageNumber >= 3 && pageNumber <= data - 2) {
@@ -29,54 +31,41 @@ export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
   }, [pageNumber]);
   return (
     <>
-      <div className="d-flex  align-items-center">
-        <KeyboardDoubleArrowLeft
-          style={{
-            height: "40px",
-            width: "40px",
-            border: "1px solid #666",
-            cursor: "pointer",
-          }}
-          onClick={() => setPageNumber(3)}
-        />
+      <main>
+        <nav class="pagination">
+          <ul class="crumbs">
+            <li>
+              <span class="crumb crumb__prev">
+                {" "}
+                <KeyboardDoubleArrowLeft onClick={() => setPageNumber(3)} />
+              </span>
+            </li>
+            {pagination?.map((ele, index) => {
+              return (
+                <NavLink
+                  key={index}
+                  onClick={() => {
+                    setPageNumber(ele);
+                    // window.scrollTo(0, 0);
+                    // document
+                    //   .getElementById("tableStart")
+                    //   .scrollIntoView({ behavior: "smooth" });
+                    tableDivRef.current.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <span class="crumb crumb__prev">{ele}</span>
+                </NavLink>
+              );
+            })}
 
-        {pagination?.map((ele, index) => {
-          return (
-            <div
-              key={index}
-              style={{
-                border: ".5px solid #666",
-                cursor: "pointer",
-                height: "40px",
-                width: "40px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "20px",
-              }}
-              onClick={() => {
-                setPageNumber(ele);
-                // window.scrollTo(0, 0);
-                // document
-                //   .getElementById("tableStart")
-                //   .scrollIntoView({ behavior: "smooth" });
-                tableDivRef.current.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              {ele}
-            </div>
-          );
-        })}
-        <KeyboardDoubleArrowRight
-          style={{
-            height: "40px",
-            width: "40px",
-            border: "1px solid #666",
-            cursor: "pointer",
-          }}
-          onClick={() => setPageNumber(data)}
-        />
-      </div>
+            <li>
+              <span class="crumb crumb__next">
+                <KeyboardDoubleArrowRight onClick={() => setPageNumber(data)} />
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </main>
     </>
   );
 }

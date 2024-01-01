@@ -4,23 +4,29 @@ import { AddShoppingCart, FavoriteBorder } from "@mui/icons-material";
 export default function HomePagefeatureCard({ ele }) {
   return (
     <>
-      <div
-        className="homepagefeatureCardContainer"
-        style={{ marginBottom: "80px" }}
-      >
-        <div className="d-flex flex-column">
-          <img
-            className="homepagefeatureCardimage"
-            src={ele?.thumbnail}
-            alt=""
-          />
-          <div className="carAndWishlist ">
-            <AddShoppingCart style={{ fontSize: "30px", cursor: "pointer" }} />
-            <FavoriteBorder style={{ fontSize: "30px", cursor: "pointer" }} />
-          </div>
-          <div className="details ps-4">
-            <div>{ele?.description}</div>
-            <div style={{ color: "grey" }}>Rs.{ele?.price}</div>
+      <div className="product-card">
+        <div className="product-tumb">
+          <img src={ele?.thumbnail} alt="" />
+        </div>
+        <div className="product-details">
+          <span className="product-catagory">{ele?.title}</span>
+          <h4>
+            <span href="">{ele?.description}</span>
+          </h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero,
+            possimus nostrum!
+          </p>
+          <div className="product-bottom-details">
+            <div className="product-price">₹{ele?.price}</div>
+            <div className="product-links">
+              <div className="product-icon">
+                <AddShoppingCart style={{ cursor: "pointer" }} />
+              </div>
+              <div className="product-icon">
+                <FavoriteBorder style={{ cursor: "pointer" }} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
