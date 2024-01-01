@@ -1,10 +1,10 @@
 .homepagefeatureCardContainer {
-  height: 400px;
-  width: 400px;
+  width: 33.33%;
 }
 .homepagefeatureCardContainer .homepagefeatureCardimage {
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 80%;
+  text-align: center;
   z-index: 0;
 }
 .homepagefeatureCardContainer .carAndWishlist {
@@ -14,7 +14,9 @@
   transition: 0.5s all ease-in-out;
   z-index: 011111;
 }
-
+.homepagefeatureCardContainer:last-child {
+  margin-right: auto;
+}
 /* .homepagefeatureCardimage:hover .carAndWishlist {
   transform: scale(1);
 } */

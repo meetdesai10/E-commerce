@@ -17,10 +17,15 @@ export default function Product() {
         pageNumber={productPageNumber}
         setPageNumber={setProductPageNumber}
       />
-      <div className="d-flex justify-content-between flex-wrap p-5">
-        {products?.map((ele, index) => {
-          return <HomePagefeatureCard key={index} ele={ele} />;
-        })}
+      <div className="w-100">
+        <div
+          className="mainProductContainer d-flex justify-content-between flex-wrap "
+          style={{ border: "1px solid black" }}
+        >
+          {products?.map((ele, index) => {
+            return <HomePagefeatureCard key={index} ele={ele} />;
+          })}
+        </div>
       </div>
     </div>
   );

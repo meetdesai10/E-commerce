@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Table } from "reactstrap";
 import { BE_URL } from "../../../../config";
 import { fetchProductData } from "../../../../redux/features/Products";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
-export default function ProductTable({ pageNumber }) {
+export default function ProductTable({ pageNumber, tableDivRef }) {
   let [allProductData, setAllProductData] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function ProductTable({ pageNumber }) {
     }
   }, [data]);
   return (
-    <div>
+    <div ref={tableDivRef}>
       <Table hover>
         <thead>
           <tr>

@@ -5,22 +5,12 @@ import {
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function ({ limit, pageNumber, setPageNumber }) {
+export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
+  console.log(": limit", limit);
+  const [pagination, setPagination] = useState([1, 2, 3, 4, 5]);
   let data = useSelector((state) =>
     Math.ceil(state?.ProductsSlice?.count / limit)
   );
-  const [pagination, setPagination] = useState(
-    pageNumber >= 3 && pageNumber <= data - 2
-      ? [
-          pageNumber - 2,
-          pageNumber - 1,
-          pageNumber,
-          pageNumber + 1,
-          pageNumber + 2,
-        ]
-      : [1, 2, 3, 4, 5]
-  );
-
   console.log(": data", data);
   useEffect(() => {
     if (pageNumber >= 3 && pageNumber <= data - 2) {
@@ -64,7 +54,14 @@ export default function ({ limit, pageNumber, setPageNumber }) {
                 alignItems: "center",
                 fontSize: "20px",
               }}
-              onClick={() => setPageNumber(ele)}
+              onClick={() => {
+                setPageNumber(ele);
+                // window.scrollTo(0, 0);
+                // document
+                //   .getElementById("tableStart")
+                //   .scrollIntoView({ behavior: "smooth" });
+                tableDivRef.current.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               {ele}
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Button,
   Modal,
@@ -13,15 +13,11 @@ import Pagination from "../../components/pagination/Pagination";
 export default function AdminProducts() {
   let [modal, setModal] = useState(false);
   let [pageNumber, setPageNumber] = useState(3);
+  const tableDivRef = useRef(null);
 
   let toggle = () => setModal(!modal);
   return (
     <>
-      <Pagination
-        limit="10"
-        pageNumber={pageNumber}
-        setPageNumber={setPageNumber}
-      />
       <div className="d-flex gap-4 justify-content-end me-5 ms-5">
         <FormGroup>
           <Input
@@ -47,7 +43,13 @@ export default function AdminProducts() {
           </ModalBody>
         </Modal>
       </div>
-      <ProductTable pageNumber={pageNumber} />
+      <ProductTable tableDivRef={tableDivRef} pageNumber={pageNumber} />
+      <Pagination
+        tableDivRef={tableDivRef}
+        limit="10"
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+      />
     </>
   );
 }
