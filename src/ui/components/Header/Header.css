@@ -1,7 +1,14 @@
-.loginBtn{
-    transition: .5s all ease-in-out;
+.headerContainer {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-color: white;
+  border-bottom: 1px solid grey;
 }
-.loginBtn:hover{
-background-color: black;
-color: white;
+.loginBtn {
+  transition: 0.5s all ease-in-out;
+}
+.loginBtn:hover {
+  background-color: black;
+  color: white;
 }

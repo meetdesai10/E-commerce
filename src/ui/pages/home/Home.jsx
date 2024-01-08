@@ -7,10 +7,10 @@ import homePageCardData from "../../../data/homePageCardData";
 import WatchesShowUppage from "../../components/home/watchesShowUpPage.jsx/WatchesShowUppage";
 import HomeBlogpage from "../../components/home/homeBlogPage/HomeBlogpage";
 import Footer from "../../components/footer/Footer";
-export default function Home() {
+export default function Home({ homeRef }) {
   return (
     <>
-      <div className="homePageContainer">
+      <div ref={homeRef} className="homePageContainer">
         <div className="backGroungImageHome"></div>
         <div className="homePageDetails">
           <div
@@ -39,15 +39,6 @@ export default function Home() {
       <HomeFeature />
       <WatchesShowUppage />
       <HomeBlogpage />
-      <hr
-        style={{
-          backgroundColor: "gray",
-          height: "1px",
-          width: "100%",
-          marginTop: "30px",
-          padding: "0px",
-        }}
-      />
       <Footer />
     </>
   );

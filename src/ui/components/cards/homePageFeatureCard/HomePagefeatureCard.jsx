@@ -30,7 +30,12 @@ export default function HomePagefeatureCard({ ele }) {
             possimus nostrum!
           </p>
           <div className="product-bottom-details">
-            <div className="product-price">₹{ele?.price}</div>
+            <div>
+              <div style={{ color: "gray", fontSize: "15px" }}>
+                Discount{" " + ele?.discountPercentage}%
+              </div>
+              <div className="product-price">₹{ele?.price}</div>
+            </div>
             <div className="product-links">
               <div className="product-icon">
                 <AddShoppingCart style={{ cursor: "pointer" }} />

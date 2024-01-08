@@ -9,12 +9,11 @@ import { NavLink } from "react-bootstrap";
 
 export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
   const [pagination, setPagination] = useState([1, 2, 3, 4, 5]);
-  let data = useSelector((state) =>
-    Math.ceil(state?.ProductsSlice?.count / limit)
-  );
+  let data = useSelector((state) => state?.ProductsSlice?.count);
 
   useEffect(() => {
-    if (pageNumber >= 3 && pageNumber <= data - 2) {
+    let pageCount = Math.ceil(data / limit);
+    if (pageNumber >= 3 && pageNumber <= pageCount - 2) {
       let arr = [
         pageNumber - 2,
         pageNumber - 1,
@@ -23,14 +22,20 @@ export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
         pageNumber + 2,
       ];
       setPagination(arr);
-    } else if (pageNumber == data || pageNumber == data - 1) {
-      let arr = [data - 4, data - 3, data - 2, data - 1, data];
+    } else if (pageNumber == pageCount || pageNumber == pageCount - 1) {
+      let arr = [
+        pageCount - 4,
+        pageCount - 3,
+        pageCount - 2,
+        pageCount - 1,
+        pageCount,
+      ];
       setPagination(arr);
     } else {
       let arr = [1, 2, 3, 4, 5];
       setPagination(arr);
     }
-  }, [pageNumber]);
+  }, [pageNumber, data]);
   return (
     <>
       <main>
@@ -63,7 +68,7 @@ export default function ({ limit, pageNumber, setPageNumber, tableDivRef }) {
             <li>
               <span
                 className="crumb crumb__next"
-                onClick={() => setPageNumber(data)}
+                onClick={() => setPageNumber(Math.ceil(data / limit))}
               >
                 <KeyboardDoubleArrowRight />
               </span>

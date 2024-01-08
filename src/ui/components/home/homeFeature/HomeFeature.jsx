@@ -9,7 +9,6 @@ export default function HomeFeature() {
     dispatch(fetchProductData({ page: 1, limit: 6 }));
   }, []);
   const data = useSelector((state) => state?.ProductsSlice?.productData);
-  console.log(": HomeFeature -> data", data);
   return (
     <div>
       <div className="homefeatureHeader  pt-5">

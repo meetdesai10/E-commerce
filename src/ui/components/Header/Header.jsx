@@ -10,7 +10,12 @@ import { logOut } from "../../../redux/features/logReg";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export default function Header() {
+export default function Header({
+  contactUsRef,
+  productsRef,
+  homeRef,
+  aboutUsRef,
+}) {
   let dispatch = useDispatch();
   let navigate = useNavigate();
   let [modal, setModal] = useState(false);
@@ -44,6 +49,9 @@ export default function Header() {
       }
     });
   }
+  // function setTopOnClick(referenece) {
+  //   referenece.current.scrolleIntoView({ behavior: "smooth" });
+  // }
   return (
     <>
       <div className="headerContainer d-flex pe-5 ps-5 pt-1 pb-1 justify-content-between align-items-center ">
@@ -143,6 +151,15 @@ export default function Header() {
                     : "/profile"
                 }
               >
+                <NavLink to={"/cart"}>
+                  <AddShoppingCart
+                    style={{
+                      fontSize: "30px",
+                      cursor: "pointer",
+                      color: "black",
+                    }}
+                  />
+                </NavLink>
                 <AccountBox
                   style={{ height: "40px", width: "40px", cursor: "pointer" }}
                 />
@@ -156,7 +173,13 @@ export default function Header() {
               Login
             </Button>
           )}
-          <Modal isOpen={modal} toggle={toggle}>
+          <Modal
+            style={{ zIndex: "99999999" }}
+            className="loginFormModel"
+            isOpen={modal}
+            toggle={toggle}
+            centered
+          >
             <ModalHeader toggle={toggle}>
               {logReg ? "Login" : "Register"}
             </ModalHeader>
@@ -172,11 +195,6 @@ export default function Header() {
               )}
             </ModalBody>
           </Modal>
-          <NavLink to={"/cart"}>
-            <AddShoppingCart
-              style={{ fontSize: "30px", cursor: "pointer", color: "black" }}
-            />
-          </NavLink>
         </div>
       </div>
     </>

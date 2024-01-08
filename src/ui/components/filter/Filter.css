@@ -1,0 +1,43 @@
+.filterContainer .filterBtn {
+  margin-left: 100px;
+}
+
+.sideBarContent {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 30%;
+  height: 100vh;
+  background-color: white;
+  z-index: 100000;
+  overflow-x: hidden;
+  transition: 0.2s all ease-in-out;
+}
+.sideBarContent.sideBarContentClose {
+  width: 0px;
+}
+
+.emptySideBar {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  z-index: 100;
+}
+.emptySideBar.emptySideBarNone {
+  display: none;
+}
+.sideBarContent .category {
+  width: 50%;
+  height: 75vh;
+  padding: 20px;
+  background-color: #f7f9fa;
+}
+.sideBarContent .openFilterOption {
+  height: 500px;
+  height: 75vh;
+  width: 50%;
+  padding: 10px;
+}

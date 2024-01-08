@@ -1,124 +1,155 @@
-import {
-  Call,
-  Email,
-  Facebook,
-  Instagram,
-  LocationOn,
-  Pinterest,
-  Twitter,
-} from "@mui/icons-material";
+import logo from "../../../../public/logoHeader.jpg";
 import "./Footer.css";
-import visa from "../../../../public/paymentFooterCard/visa.png";
-import master from "../../../../public/paymentFooterCard/master.jfif";
-import paypal from "../../../../public/paymentFooterCard/paypal.jfif";
-import rupay from "../../../../public/paymentFooterCard/rupay.jfif";
 export default function Footer() {
   return (
-    <div className="footerContainer">
-      <div className="leftSide">
-        <div className="Title">TITAN</div>
-        <div className="leftDesc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad quae aut
-          reprehenderit voluptates ex numquam porro officia aliquid omnis vel
-          odio delectus magni at veniam dolores ipsam magnam, alias deleniti!
+    <footer className="footer-section">
+      <div className="container">
+        <div className="footer-cta pt-5 pb-5">
+          <div className="row">
+            <div className="col-xl-4 col-md-4 mb-30">
+              <div className="single-cta">
+                <i className="fas fa-map-marker-alt"></i>
+                <div className="cta-text">
+                  <h4>Find us</h4>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 col-md-4 mb-30">
+              <div className="single-cta">
+                <i className="fas fa-phone"></i>
+                <div className="cta-text">
+                  <h4>Call us</h4>
+                  <span>46946494949</span>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 col-md-4 mb-30">
+              <div className="single-cta">
+                <i className="far fa-envelope-open"></i>
+                <div className="cta-text">
+                  <h4>Mail us</h4>
+                  <span>mail@info.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="icons">
-          <div
-            className="icon"
-            style={{
-              backgroundColor: "#3B5999",
-              padding: "7px",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Facebook style={{ color: "white" }} />
-          </div>
-          <div
-            className="icon"
-            style={{
-              backgroundColor: "#E4405F",
-              padding: "7px",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Instagram style={{ color: "white" }} />
-          </div>
-          <div
-            className="icon"
-            style={{
-              backgroundColor: "#55ACEE",
-              padding: "7px",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Twitter style={{ color: "white" }} />
-          </div>
-          <div
-            className="icon"
-            style={{
-              backgroundColor: "#E60023",
-              padding: "7px",
-              borderRadius: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Pinterest style={{ color: "white" }} />
+        <div className="footer-content pt-5 pb-5">
+          <div className="row">
+            <div className="col-xl-4 col-lg-4 mb-50">
+              <div className="footer-widget">
+                <div className="footer-logo">
+                  <img src={logo} className="img-fluid" alt="logo" />
+                </div>
+                <div className="footer-text">
+                  <p>
+                    Lorem ipsum dolor sit amet, consec tetur adipisicing elit,
+                    sed do eiusmod tempor incididuntut consec tetur adipisicing
+                    elit,Lorem ipsum dolor sit amet.
+                  </p>
+                </div>
+                <div className="footer-social-icon">
+                  <a href="#">
+                    <i className="fab fa-facebook-f facebook-bg"></i>
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-twitter twitter-bg"></i>
+                  </a>
+                  <a href="#">
+                    <i className="fab fa-google-plus-g google-bg"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 mb-10">
+              <div className="footer-widget">
+                <div className="footer-widget-heading">
+                  <h3>Useful Links</h3>
+                </div>
+                <ul>
+                  <li>
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">about</a>
+                  </li>
+                  <li>
+                    <a href="#">services</a>
+                  </li>
+                  <li>
+                    <a href="#">portfolio</a>
+                  </li>
+                  <li>
+                    <a href="#">Contact</a>
+                  </li>
+                  <li>
+                    <a href="#">About us</a>
+                  </li>
+                  <li>
+                    <a href="#">Our Services</a>
+                  </li>
+                  <li>
+                    <a href="#">Expert Team</a>
+                  </li>
+                  <li>
+                    <a href="#">Contact us</a>
+                  </li>
+                  <li>
+                    <a href="#">Latest News</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 mb-50">
+              <div className="footer-widget">
+                <div className="footer-widget-heading">
+                  <h3>Download World Of Titan App</h3>
+                </div>
+
+                <div className="subscribe-form"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="centerSide">
-        <div className="Title">Useful Links</div>
-        <div className="centerLinks">
-          <ul className="links">
-            <li>Home</li>
-            <li>Man Fashion</li>
-            <li>Accessories</li>
-            <li>Order Tracking</li>
-            <li>Whishlist</li>
-          </ul>
-          <ul className="links">
-            <li>Cart</li>
-            <li>Woman Fashion</li>
-            <li>My Account</li>
-            <li>Whishlist</li>
-            <li>Terms & Conditions</li>
-          </ul>
-        </div>
-      </div>
-      <div className="rightSide">
-        <div className="Title">Contact</div>
-        <div className="location">
-          <LocationOn style={{ fontSize: "30px" }} />
-          <div className="address">
-            77, Akshardham Soc, Katargam Surat 395004
+      <div className="copyright-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-6 col-lg-6 text-center text-lg-left">
+              <div className="copyright-text">
+                <p>
+                  Copyright &copy; 2018, All Right Reserved{" "}
+                  <a href="https://codepen.io/anupkumar92/">Anup</a>
+                </p>
+              </div>
+            </div>
+            <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+              <div className="footer-menu">
+                <ul>
+                  <li>
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">Terms</a>
+                  </li>
+                  <li>
+                    <a href="#">Privacy</a>
+                  </li>
+                  <li>
+                    <a href="#">Policy</a>
+                  </li>
+                  <li>
+                    <a href="#">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="moNo">
-          <Call style={{ fontSize: "30px", color: "black" }} />
-          <div className="number">+91 7486917928</div>
-        </div>
-        <div className="emailContainer">
-          <Email style={{ fontSize: "30px" }} />
-          <div className="emailAddress">dmeet1008@gmail.com</div>
-        </div>
-        <div className="paymentsMethods">
-          <img src={master} alt="" />
-          <img src={paypal} alt="" />
-          <img src={rupay} alt="" />
-          <img src={visa} alt="" />
-        </div>
       </div>
-    </div>
+    </footer>
   );
 }

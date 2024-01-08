@@ -3,20 +3,23 @@ import Pagination from "../../components/pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import HomePagefeatureCard from "../../components/cards/homePageFeatureCard/HomePagefeatureCard";
 import { fetchProductData } from "../../../redux/features/Products";
+import Filter from "../../components/filter/Filter";
+import Footer from "../../components/footer/Footer";
 
-export default function Product() {
+export default function Product({ productsRef }) {
   const dispatch = useDispatch();
-  let [productPageNumber, setProductPageNumber] = useState(3);
+  let [productPageNumber, setProductPageNumber] = useState(1);
   useEffect(() => {
     dispatch(fetchProductData({ page: productPageNumber, limit: 21 }));
   }, [productPageNumber]);
   let products = useSelector((state) => state?.ProductsSlice?.productData);
   const tableDivRef = useRef(null);
   return (
-    <div>
+    <div ref={productsRef}>
+      <Filter />
       <div ref={tableDivRef} className="w-100">
         <div
-          className="mainProductContainer d-flex justify-content-between flex-wrap "
+          className="mainProductContainer d-flex justify-content-between flex-wrap"
           style={{ margin: "0px 50px" }}
         >
           {products?.map((ele, index) => {
@@ -26,10 +29,11 @@ export default function Product() {
       </div>
       <Pagination
         tableDivRef={tableDivRef}
-        limit="20"
+        limit="21"
         pageNumber={productPageNumber}
         setPageNumber={setProductPageNumber}
       />
+      <Footer />
     </div>
   );
 }

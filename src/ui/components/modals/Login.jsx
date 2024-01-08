@@ -45,7 +45,7 @@ export default function Login({ logReg, setLogReg, toggle }) {
       });
   }
   return (
-    <>
+    <div>
       <FormGroup>
         <Label for="exampleEmail">Email</Label>
         <Input
@@ -84,6 +84,6 @@ export default function Login({ logReg, setLogReg, toggle }) {
       </div>
       {/* <div>{logData.email}</div>
       <div>{logData.password}</div> */}
-    </>
+    </div>
   );
 }
