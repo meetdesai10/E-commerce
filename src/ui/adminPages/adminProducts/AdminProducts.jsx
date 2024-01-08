@@ -27,7 +27,7 @@ export default function AdminProducts() {
 
   return (
     <>
-      <div className="d-flex gap-4 justify-content-end me-5 ms-5">
+      <div className="d-flex gap-4 justify-content-end me-5 ms-5 mt-3">
         <FormGroup>
           <Input
             style={{ width: "300px" }}

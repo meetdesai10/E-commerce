@@ -2,8 +2,16 @@ import { Cancel, FilterAlt } from "@mui/icons-material";
 import React, { useState } from "react";
 import "./Filter.css";
 import { Button } from "reactstrap";
-export default function Filter() {
+import { useAsyncError } from "react-router-dom";
+import Color from "../../components/filter/allFilterOptions/Color";
+import Category from "../../components/filter/allFilterOptions/Category";
+import Features from "../../components/filter/allFilterOptions/Features";
+import Price from "../../components/filter/allFilterOptions/Price";
+import WaterProof from "../../components/filter/allFilterOptions/WaterProof";
+export default function Filter({ filterData, setFilterData }) {
   const [openSideCloseBar, setOpenCloseSideBar] = useState(false);
+  let [filterCategory, setFilterCategory] = useState("Category");
+
   return (
     <div className="filterContainer mt-3">
       <button
@@ -22,36 +30,86 @@ export default function Filter() {
               : "sideBarContent sideBarContentClose"
           }
         >
-          <div className="p-4 d-flex align-items-center justify-content-between">
+          <div className="p-4 d-flex align-items-center justify-content-between bg-black">
             <div
               style={{ fontSize: "20px" }}
-              className="d-flex align-items-center"
+              className="d-flex align-items-center text-white"
             >
               <FilterAlt style={{ fontSize: "30px" }} />
               Filters By
             </div>
             <Cancel
+              className="text-white"
               onClick={() => setOpenCloseSideBar(false)}
               style={{ fontSize: "30px", cursor: "pointer" }}
             />
           </div>
           {/*Filter content*/}
 
-          <div className="d-flex w100 ">
+          <div className="d-flex w100">
             <div
               className="category d-flex flex-column gap-3"
               style={{ fontSize: "18px" }}
             >
-              <div>Category</div>
-              <div>color</div>
-              <div>price</div>
-              <div>Best for</div>
-              <div>WaterProof</div>
-              <div>Playback</div>
-              <div>Features</div>
-              <div>Availability</div>
+              <div
+                onClick={() => setFilterCategory("Category")}
+                className="filterCategory"
+              >
+                Category
+              </div>
+              <div
+                onClick={() => setFilterCategory("Color")}
+                className="filterCategory"
+              >
+                color
+              </div>
+              <div
+                onClick={() => setFilterCategory("Price")}
+                className="filterCategory"
+              >
+                price
+              </div>
+
+              <div
+                onClick={() => setFilterCategory("WaterProof")}
+                className="filterCategory"
+              >
+                WaterProof
+              </div>
+
+              <div
+                onClick={() => setFilterCategory("Features")}
+                className="filterCategory"
+              >
+                Features
+              </div>
             </div>
-            <div className="openFilterOption "></div>
+            <div className="openFilterOption ">
+              {filterCategory == "Category" && (
+                <Category
+                  filterData={filterData}
+                  setFilterData={setFilterData}
+                />
+              )}
+              {filterCategory == "Color" && (
+                <Color filterData={filterData} setFilterData={setFilterData} />
+              )}
+              {filterCategory == "Price" && (
+                <Price filterData={filterData} setFilterData={setFilterData} />
+              )}
+              {filterCategory == "Features" && (
+                <Features
+                  filterData={filterData}
+                  setFilterData={setFilterData}
+                />
+              )}
+              {filterCategory == "WaterProof" && (
+                <WaterProof
+                  filterData={filterData}
+                  setFilterData={setFilterData}
+                />
+              )}
+            </div>
           </div>
           {/*buttons*/}
           <div className="d-flex gap-2 m-4">

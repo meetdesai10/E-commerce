@@ -9,7 +9,7 @@
   width: 30%;
   height: 100vh;
   background-color: white;
-  z-index: 100000;
+  z-index: 10000000;
   overflow-x: hidden;
   transition: 0.2s all ease-in-out;
 }
@@ -25,6 +25,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   height: 100vh;
   z-index: 100;
+  z-index: 1000000;
 }
 .emptySideBar.emptySideBarNone {
   display: none;
@@ -33,11 +34,16 @@
   width: 50%;
   height: 75vh;
   padding: 20px;
-  background-color: #f7f9fa;
+  background-color: #edefef;
 }
 .sideBarContent .openFilterOption {
   height: 500px;
   height: 75vh;
   width: 50%;
   padding: 10px;
+  background-color: #f7f7f7;
+  overflow-y: scroll;
+}
+.sideBarContent .filterCategory {
+  cursor: pointer;
 }

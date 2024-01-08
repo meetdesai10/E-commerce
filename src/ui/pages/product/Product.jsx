@@ -9,6 +9,13 @@ import Footer from "../../components/footer/Footer";
 export default function Product({ productsRef }) {
   const dispatch = useDispatch();
   let [productPageNumber, setProductPageNumber] = useState(1);
+  let [filterData, setFilterData] = useState({
+    category: [],
+    color: [],
+    price: [],
+    waterProof: [],
+    features: [],
+  });
   useEffect(() => {
     dispatch(fetchProductData({ page: productPageNumber, limit: 21 }));
   }, [productPageNumber]);
@@ -16,7 +23,7 @@ export default function Product({ productsRef }) {
   const tableDivRef = useRef(null);
   return (
     <div ref={productsRef}>
-      <Filter />
+      <Filter filterData={filterData} setFilterData={setFilterData} />
       <div ref={tableDivRef} className="w-100">
         <div
           className="mainProductContainer d-flex justify-content-between flex-wrap"
