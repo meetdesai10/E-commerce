@@ -1,4 +1,4 @@
-import logo from "../../../../public/logoHeader.jpg";
+import logo from "../../../../public/logoHeader.png";
 import "./Footer.css";
 export default function Footer() {
   return (

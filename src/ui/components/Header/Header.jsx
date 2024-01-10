@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../Header/Header.css";
 import { AccountBox, AddShoppingCart } from "@mui/icons-material";
-import logo from "../../../../public/logoHeader.jpg";
+import logo from "../../../../public/logoHeader.png";
 import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 import Login from "../modals/Login";
 import Register from "../modals/Register";
@@ -151,17 +151,17 @@ export default function Header({
                     : "/profile"
                 }
               >
-                <NavLink to={"/cart"}>
-                  <AddShoppingCart
-                    style={{
-                      fontSize: "30px",
-                      cursor: "pointer",
-                      color: "black",
-                    }}
-                  />
-                </NavLink>
                 <AccountBox
                   style={{ height: "40px", width: "40px", cursor: "pointer" }}
+                />
+              </NavLink>
+              <NavLink to={"/cart"}>
+                <AddShoppingCart
+                  style={{
+                    fontSize: "30px",
+                    cursor: "pointer",
+                    color: "black",
+                  }}
                 />
               </NavLink>
             </>

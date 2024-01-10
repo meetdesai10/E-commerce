@@ -54,7 +54,7 @@ export default function Contact({ contactUsRef }) {
               // }
             />
           </FormGroup>
-          <Button className="loginBtn bg-white border-3 border-black text-black fw-medium ps-4 pe-4 w-100 pt-2 pb-2 fs-6 cursor-pointer">
+          <Button className="loginBtn bg-white border-1 border-black text-black fw-medium ps-4 pe-4 w-100 pt-2 pb-2 fs-6 cursor-pointer">
             Send Mail
           </Button>
         </div>

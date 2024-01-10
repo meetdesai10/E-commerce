@@ -1,5 +1,5 @@
 import { Cancel, FilterAlt } from "@mui/icons-material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Filter.css";
 import { Button } from "reactstrap";
 import { useAsyncError } from "react-router-dom";
@@ -11,6 +11,17 @@ import WaterProof from "../../components/filter/allFilterOptions/WaterProof";
 export default function Filter({ filterData, setFilterData }) {
   const [openSideCloseBar, setOpenCloseSideBar] = useState(false);
   let [filterCategory, setFilterCategory] = useState("Category");
+
+  useEffect(() => {
+    if (openSideCloseBar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto"; // Reset overflow to default when sidebar is closed
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [openSideCloseBar]);
 
   return (
     <div className="filterContainer mt-3">
@@ -111,6 +122,7 @@ export default function Filter({ filterData, setFilterData }) {
               )}
             </div>
           </div>
+
           {/*buttons*/}
           <div className="d-flex gap-2 m-4">
             <Button

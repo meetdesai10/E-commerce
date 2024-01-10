@@ -22,3 +22,6 @@
 .blogCardContainer {
   height: fit-content;
 }
+#root {
+  overflow: hidden;
+}
