@@ -24,6 +24,7 @@ export default function Login({ logReg, setLogReg, toggle }) {
       .then((res) => {
         dispatch(logRegAuth(res?.data));
         navigate("/");
+        localStorage.setItem("login", "true");
         Swal.fire({
           position: "center",
           icon: "success",

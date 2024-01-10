@@ -16,25 +16,19 @@ import { useSelector } from "react-redux";
 import ProductDetailPage from "../ui/adminPages/productDetailPage/ProductDetailPage";
 import PublicProductDetailPage from "../ui/pages/product/publicProductDetaildPage/publicProductDetailPage";
 import Footer from "../ui/components/footer/Footer";
+import AuthRouter from "./AuthRouter";
+import Error from "../ui/pages/error/Error";
 export default function Router() {
   const userData = useSelector((state) => state.logRegSlice);
-  const homeRef = useRef();
   const productsRef = useRef();
-  const aboutUsRef = useRef();
-  const contactUsRef = useRef();
   return (
     <>
-      <Header
-        homeRef={homeRef}
-        productsRef={productsRef}
-        aboutUsRef={aboutUsRef}
-        contactUsRef={contactUsRef}
-      />
+      <Header />
       <Routes>
         {userData?.user?.userType == "admin" ? (
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<AuthRouter Component={Dashboard} />} />
         ) : (
-          <Route path="/" element={<Home homeRef={homeRef} />} />
+          <Route path="/" element={<Home />} />
         )}
         <Route
           path="/products"
@@ -44,21 +38,25 @@ export default function Router() {
           path="/products/:publicProductId"
           element={<PublicProductDetailPage />}
         />
-        <Route path="/about" element={<About aboutUsRef={aboutUsRef} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<AuthRouter Component={Profile} />} />
+        <Route path="/cart" element={<AuthRouter Component={Cart} />} />
         <Route
-          path="/contact"
-          element={<Contact contactUsRef={contactUsRef} />}
+          path="/adminproducts"
+          element={<AuthRouter Component={AdminProducts} />}
         />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/adminproducts" element={<AdminProducts />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/adminProfile" element={<AdminProfile />} />
+        <Route path="/user" element={<AuthRouter Component={User} />} />
+        <Route path="/order" element={<AuthRouter Component={Order} />} />
+        <Route
+          path="/adminProfile"
+          element={<AuthRouter Component={AdminProfile} />}
+        />
         <Route
           path="/adminproducts/:adminProductId"
           element={<ProductDetailPage />}
         />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </>
   );

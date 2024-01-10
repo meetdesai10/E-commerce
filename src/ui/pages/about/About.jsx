@@ -21,9 +21,9 @@ import {
   Twitter,
 } from "@mui/icons-material";
 import Footer from "../../components/footer/Footer";
-export default function About({ aboutUsRef }) {
+export default function About() {
   return (
-    <div ref={aboutUsRef} className="aboutUsContainer">
+    <div className="aboutUsContainer">
       <div className="w-100  " style={{ height: "80vh" }}>
         <img
           src={mainImage}

@@ -7,10 +7,10 @@ import homePageCardData from "../../../data/homePageCardData";
 import WatchesShowUppage from "../../components/home/watchesShowUpPage.jsx/WatchesShowUppage";
 import HomeBlogpage from "../../components/home/homeBlogPage/HomeBlogpage";
 import Footer from "../../components/footer/Footer";
-export default function Home({ homeRef }) {
+export default function Home() {
   return (
     <>
-      <div ref={homeRef} className="homePageContainer">
+      <div className="homePageContainer">
         <div className="backGroungImageHome"></div>
         <div className="homePageDetails">
           <div

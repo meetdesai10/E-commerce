@@ -3,9 +3,9 @@ import "./contact.css";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 import Footer from "../../components/footer/Footer";
 
-export default function Contact({ contactUsRef }) {
+export default function Contact() {
   return (
-    <div ref={contactUsRef}>
+    <div>
       <div className="contactForm">
         <div className="contactFeilds">
           <h1 className="text-center mb-3">Conatct Us</h1>
