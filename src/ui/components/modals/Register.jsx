@@ -25,6 +25,7 @@ export default function Register({ logReg, setLogReg, toggle }) {
       .then((res) => {
         dispatch(logRegAuth(res?.data));
         toggle();
+        localStorage.setItem("login", "true");
         navigate("/");
         Swal.fire({
           position: "center",

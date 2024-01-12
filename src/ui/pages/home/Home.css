@@ -1,7 +1,7 @@
 .homePageContainer {
   position: relative;
   height: 88.6vh;
-  width: 100%;
+  width: 100vw;
 }
 .backGroungImageHome {
   position: absolute;
@@ -23,7 +23,6 @@
   color: #cbba9c;
   border-left: 5px solid #cbba9c;
   border-radius: 20px;
-  
 }
 .homePageDetails .homeBtn {
   background-color: transparent;

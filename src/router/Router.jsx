@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../ui/pages/home/Home";
 import Header from "../ui/components/Header/Header";
@@ -11,7 +11,6 @@ import Order from "../ui/adminPages/order/Order";
 import User from "../ui/adminPages/user/User";
 import Profile from "../ui/pages/profile/Profile";
 import AdminProfile from "../ui/adminPages/adminProfile/AdminProfile";
-import Cart from "../ui/pages/cart/Cart";
 import { useSelector } from "react-redux";
 import ProductDetailPage from "../ui/adminPages/productDetailPage/ProductDetailPage";
 import PublicProductDetailPage from "../ui/pages/product/publicProductDetaildPage/publicProductDetailPage";
@@ -21,9 +20,20 @@ import Error from "../ui/pages/error/Error";
 export default function Router() {
   const userData = useSelector((state) => state.logRegSlice);
   const productsRef = useRef();
+  let [modal, setModal] = useState(false);
+  let [logReg, setLogReg] = useState(false);
+  let toggle = () => {
+    setModal(!modal);
+    setLogReg(true);
+  };
   return (
     <>
-      <Header />
+      <Header
+        toggle={toggle}
+        modal={modal}
+        logReg={logReg}
+        setLogReg={setLogReg}
+      />
       <Routes>
         {userData?.user?.userType == "admin" ? (
           <Route path="/" element={<AuthRouter Component={Dashboard} />} />
@@ -32,7 +42,7 @@ export default function Router() {
         )}
         <Route
           path="/products"
-          element={<Products productsRef={productsRef} />}
+          element={<Products productsRef={productsRef} toggle={toggle} />}
         />
         <Route
           path="/products/:publicProductId"
@@ -41,7 +51,6 @@ export default function Router() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<AuthRouter Component={Profile} />} />
-        <Route path="/cart" element={<AuthRouter Component={Cart} />} />
         <Route
           path="/adminproducts"
           element={<AuthRouter Component={AdminProducts} />}

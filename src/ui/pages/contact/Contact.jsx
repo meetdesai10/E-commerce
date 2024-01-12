@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./contact.css";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 import Footer from "../../components/footer/Footer";
-
 export default function Contact() {
+  let [Data, setData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    mobile: "",
+    messege: "",
+  });
+
   return (
     <div>
       <div className="contactForm">
@@ -13,45 +20,40 @@ export default function Contact() {
             <Input
               placeholder="Enter Name"
               type="text"
-              // onChange={(e) =>
-              //   setLogData({ ...logData, email: e?.target?.value })
-              // }
+              name="user_name"
+              onChange={(e) => setData({ ...Data, name: e?.target?.value })}
             />
           </FormGroup>
           <FormGroup>
             <Input
               placeholder="Enter Mail Address"
               type="text"
-              // onChange={(e) =>
-              //   setLogData({ ...logData, email: e?.target?.value })
-              // }
+              name="user_email"
+              onChange={(e) => setData({ ...Data, email: e?.target?.value })}
             />
           </FormGroup>
           <FormGroup>
             <Input
               placeholder="Enter Mobile Number"
               type="text"
-              // onChange={(e) =>
-              //   setLogData({ ...logData, email: e?.target?.value })
-              // }
+              name="user_mobile"
+              onChange={(e) => setData({ ...Data, mobile: e?.target?.value })}
             />
           </FormGroup>
           <FormGroup>
             <Input
               placeholder="Subject"
               type="text"
-              // onChange={(e) =>
-              //   setLogData({ ...logData, email: e?.target?.value })
-              // }
+              name="user_subject"
+              onChange={(e) => setData({ ...Data, subject: e?.target?.value })}
             />
           </FormGroup>
           <FormGroup>
             <Input
               placeholder="Type Your Text Here"
               type="text"
-              // onChange={(e) =>
-              //   setLogData({ ...logData, email: e?.target?.value })
-              // }
+              name="message"
+              onChange={(e) => setData({ ...Data, message: e?.target?.value })}
             />
           </FormGroup>
           <Button className="loginBtn bg-white border-1 border-black text-black fw-medium ps-4 pe-4 w-100 pt-2 pb-2 fs-6 cursor-pointer">

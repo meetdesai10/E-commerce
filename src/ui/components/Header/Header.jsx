@@ -9,22 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../redux/features/logReg";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Cart from "../cart/cart";
 
-export default function Header({
-  contactUsRef,
-  productsRef,
-  homeRef,
-  aboutUsRef,
-}) {
+export default function Header({ toggle, modal, logReg, setLogReg }) {
   let dispatch = useDispatch();
   let navigate = useNavigate();
-  let [modal, setModal] = useState(false);
-  let [isLogin, setIsLogin] = useState(false);
-  let [logReg, setLogReg] = useState(true);
-  let toggle = () => {
-    setModal(!modal);
-    setLogReg(true);
-  };
+
   const userData = useSelector((state) => state.logRegSlice);
 
   // functions
@@ -136,7 +126,7 @@ export default function Header({
         </div>
         <div className="headerRightSide d-flex align-items-center gap-4">
           {userData?.token !== "" ? (
-            <>
+            <div className="d-flex gap-3 align-items-center">
               <Button
                 onClick={() => logOutUser()}
                 className="loginBtn bg-white border-3 border-black text-black fw-medium ps-4 pe-4 pt-2 pb-2 fs-6 cursor-pointer"
@@ -155,16 +145,8 @@ export default function Header({
                   style={{ height: "40px", width: "40px", cursor: "pointer" }}
                 />
               </NavLink>
-              <NavLink to={"/cart"}>
-                <AddShoppingCart
-                  style={{
-                    fontSize: "30px",
-                    cursor: "pointer",
-                    color: "black",
-                  }}
-                />
-              </NavLink>
-            </>
+              <Cart />
+            </div>
           ) : (
             <Button
               onClick={toggle}
