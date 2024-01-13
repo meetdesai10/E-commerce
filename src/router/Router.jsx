@@ -38,7 +38,7 @@ export default function Router() {
         {userData?.user?.userType == "admin" ? (
           <Route path="/" element={<AuthRouter Component={Dashboard} />} />
         ) : (
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home toggle={toggle} />} />
         )}
         <Route
           path="/products"

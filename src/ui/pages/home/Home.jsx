@@ -7,7 +7,7 @@ import homePageCardData from "../../../data/homePageCardData";
 import WatchesShowUppage from "../../components/home/watchesShowUpPage.jsx/WatchesShowUppage";
 import HomeBlogpage from "../../components/home/homeBlogPage/HomeBlogpage";
 import Footer from "../../components/footer/Footer";
-export default function Home() {
+export default function Home({ toggle }) {
   return (
     <>
       <div className="homePageContainer">
@@ -36,7 +36,7 @@ export default function Home() {
           return <HomePageCard key={index} ele={ele} />;
         })}
       </div>
-      <HomeFeature />
+      <HomeFeature toggle={toggle} />
       <WatchesShowUppage />
       <HomeBlogpage />
       <Footer />

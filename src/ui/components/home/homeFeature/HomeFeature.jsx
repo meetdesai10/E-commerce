@@ -3,7 +3,7 @@ import homePageFeatureCardData from "../../../../data/homePageFeatureCardData";
 import HomePagefeatureCard from "../../cards/homePageFeatureCard/HomePagefeatureCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductData } from "../../../../redux/features/Products";
-export default function HomeFeature() {
+export default function HomeFeature({ toggle }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProductData({ page: 1, limit: 6 }));
@@ -34,7 +34,7 @@ export default function HomeFeature() {
 
       <div className="w-100 d-flex justify-content-between text-center flex-wrap ps-5 pe-5">
         {data?.map((ele, index) => {
-          return <HomePagefeatureCard key={index} ele={ele} />;
+          return <HomePagefeatureCard toggle={toggle} key={index} ele={ele} />;
         })}
       </div>
     </div>
