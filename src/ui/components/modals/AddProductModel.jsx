@@ -26,13 +26,14 @@ export default function AddProductModel({
   let token = useSelector((state) => state?.logRegSlice?.token);
   const paramsid = new URLSearchParams(location.search).get("id");
   const data = useSelector((state) => state.ProductsSlice);
+  let numberOfProducts = useSelector((state) => state?.ProductsSlice?.count);
+  let pageCount = Math.ceil(numberOfProducts / 10);
   useEffect(() => {
     axios({
       method: "get",
       url: `${BE_URL}/product/getProductById/${paramsid}`,
     })
       .then((res) => {
-        console.log(": AddProductModel -> res", res?.data?.data);
         setAddProductData(res?.data?.data);
       })
       .catch((error) => {
@@ -66,8 +67,10 @@ export default function AddProductModel({
         dispatch(fetchProductData({ page: pageNumber, limit: 10 }));
         toggle();
 
-        if (data?.productData?.length >= 10) {
-          setPageNumber(pageNumber + 1);
+        if (data?.productData?.length >= 10 && pageNumber == pageCount) {
+          setPageNumber(pageCount + 1);
+        } else {
+          setPageNumber(pageCount);
         }
       })
       .catch((error) => {

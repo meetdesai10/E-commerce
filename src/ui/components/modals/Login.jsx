@@ -74,6 +74,7 @@ export default function Login({ logReg, setLogReg, toggle }) {
         Login
       </Button>
       <div
+        className="d-inline-block"
         style={{
           cursor: "pointer",
           color: "blue",
@@ -81,7 +82,7 @@ export default function Login({ logReg, setLogReg, toggle }) {
         }}
         onClick={() => setLogReg(!logReg)}
       >
-        Do you have a Account?
+        Don't you have a Account?
       </div>
       {/* <div>{logData.email}</div>
       <div>{logData.password}</div> */}

@@ -14,10 +14,6 @@ export default function ProductDetailCarousel({ id }) {
       url: `${BE_URL}/product/getProductById/${id}`,
     }).then((res) => {
       setProductDetailData(res?.data?.data);
-      console.log(
-        ": ProductDetailPageCarousel -> res?.data?.data",
-        res?.data?.data
-      );
     });
   }, [id]);
 

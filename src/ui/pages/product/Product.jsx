@@ -26,7 +26,7 @@ export default function Product({ productsRef, toggle }) {
     <div ref={productsRef}>
       <div className="d-flex justify-content-between">
         <Filter filterData={filterData} setFilterData={setFilterData} />
-        <WishList />
+        <WishList toggle={toggle} />
       </div>
       <div ref={tableDivRef} className="w-100">
         <div

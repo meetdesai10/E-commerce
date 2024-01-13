@@ -3,7 +3,8 @@ import { Cancel, Favorite } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import WishListCard from "../cards/wishListCard/WishListCard";
-export default function WishList({ filterData, setFilterData }) {
+import { useSelector } from "react-redux";
+export default function WishList({ toggle }) {
   const [openSideCloseBar, setOpenCloseSideBar] = useState(false);
 
   useEffect(() => {
@@ -16,11 +17,11 @@ export default function WishList({ filterData, setFilterData }) {
       document.body.style.overflow = "auto";
     };
   }, [openSideCloseBar]);
-
+  let token = useSelector((state) => state?.logRegSlice?.token);
   return (
     <div className="wishListContainer mt-3">
       <button
-        onClick={() => setOpenCloseSideBar(true)}
+        onClick={() => (!token ? toggle() : setOpenCloseSideBar(true))}
         className="pt-2 pb-2 ps-4 pe-4 rounded border-0 wishListBtn"
       >
         <Favorite />

@@ -11,7 +11,7 @@ export const fetchCartData = createAsyncThunk("cartdata", async () => {
     },
   })
     .then((res) => {
-      return res?.data?.data[0]?.products;
+      return res?.data?.data;
     })
     .catch((error) => {
       console.log("cartData error", error.message);

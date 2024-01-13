@@ -12,11 +12,11 @@ import User from "../ui/adminPages/user/User";
 import Profile from "../ui/pages/profile/Profile";
 import AdminProfile from "../ui/adminPages/adminProfile/AdminProfile";
 import { useSelector } from "react-redux";
-import ProductDetailPage from "../ui/adminPages/productDetailPage/ProductDetailPage";
 import PublicProductDetailPage from "../ui/pages/product/publicProductDetaildPage/publicProductDetailPage";
 import Footer from "../ui/components/footer/Footer";
 import AuthRouter from "./AuthRouter";
 import Error from "../ui/pages/error/Error";
+import AdminProductDetailPage from "../ui/adminPages/adminProductDetailPage/adminProductDetailPage";
 export default function Router() {
   const userData = useSelector((state) => state.logRegSlice);
   const productsRef = useRef();
@@ -63,7 +63,7 @@ export default function Router() {
         />
         <Route
           path="/adminproducts/:adminProductId"
-          element={<ProductDetailPage />}
+          element={<AdminProductDetailPage />}
         />
         <Route path="/*" element={<Error />} />
       </Routes>

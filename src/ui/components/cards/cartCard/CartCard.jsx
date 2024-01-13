@@ -7,9 +7,9 @@ import { Delete } from "@mui/icons-material";
 import emptyCart from "../../../../../public/cart/emptyCart.png";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
+import Swal from "sweetalert2";
 export default function CartCard({ ele, setOpenCloseSideBar }) {
   let [productCartData, setProductCartData] = useState([]);
-  console.log(productCartData);
   let navigate = useNavigate();
   useEffect(() => {
     setProductCartData(ele);
@@ -32,6 +32,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
       });
   }
   function deleteProductCart(id) {
+    console.log(": deleteProductCart -> id", id);
     axios({
       method: "delete",
       url: `${BE_URL}/cart/delete/${id}`,
@@ -41,10 +42,21 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
       },
     })
       .then((res) => {
-        console.log("suuessfully delete", res);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "product Deleted",
+          showConfirmButton: true,
+          timer: 800,
+        });
       })
       .catch((err) => {
-        console.log(err.message);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.message,
+          showConfirmButton: true,
+        });
       });
   }
   return (

@@ -97,6 +97,7 @@ export default function Register({ logReg, setLogReg, toggle }) {
         Create A Account
       </Button>
       <div
+        className="d-inline-block"
         style={{
           cursor: "pointer",
           color: "blue",
@@ -104,7 +105,7 @@ export default function Register({ logReg, setLogReg, toggle }) {
         }}
         onClick={() => setLogReg(!logReg)}
       >
-        Don't you have a Account?
+        Do you have a Account?
       </div>
       {/* <div>{regData.name}</div>
       <div>{regData.email}</div>
