@@ -31,8 +31,24 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
         console.log(err?.message);
       });
   }
+  function minusAddToCart(pId, id, isRemove) {
+    axios({
+      method: "put",
+      url: `${BE_URL}/cart/update`,
+      data: { productId: pId, _id: id, isRemove: isRemove },
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+    })
+      .then((res) => {
+        dispatch(fetchCartData());
+      })
+      .catch((err) => {
+        console.log(err?.message);
+      });
+  }
   function deleteProductCart(id) {
-    console.log(": deleteProductCart -> id", id);
     axios({
       method: "delete",
       url: `${BE_URL}/cart/delete/${id}`,
@@ -117,6 +133,9 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
                         width: "35px",
                         cursor: "pointer",
                       }}
+                      onClick={() =>
+                        minusAddToCart(ele?.productId?._id, ele?._id, 0)
+                      }
                     >
                       -
                     </span>

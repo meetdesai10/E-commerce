@@ -20,8 +20,12 @@ let logRegSlice = createSlice({
       state.token = "";
       state.user = {};
     },
+    // updateUser: (state, action) => {
+    //   state.user = { ...state.user, ...action?.payload };
+    //   localStorage.setItem("user", JSON.stringify(state.user));
+    // },
   },
 });
 
 export default logRegSlice.reducer;
-export let { logRegAuth, logOut } = logRegSlice.actions;
+export let { logRegAuth, logOut, updateUser } = logRegSlice.actions;
