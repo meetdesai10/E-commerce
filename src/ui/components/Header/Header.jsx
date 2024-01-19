@@ -29,11 +29,6 @@ export default function Header({ toggle, modal, logReg, setLogReg }) {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Logout successfull",
-          icon: "success",
-          timer: 800,
-        });
         dispatch(logOut());
         navigate("/");
       }

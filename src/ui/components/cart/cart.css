@@ -28,7 +28,7 @@
   width: 30%;
   height: 100vh;
   background-color: white;
-  z-index: 10000000;
+  z-index: 1;
   overflow-x: hidden;
   transition: 0.2s all ease-in-out;
 }
@@ -48,8 +48,7 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   height: 100vh;
-  z-index: 100;
-  z-index: 1000000;
+  z-index: 0;
 }
 .emptySideBarCart.emptySideBarNoneCart {
   display: none;

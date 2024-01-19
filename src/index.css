@@ -25,3 +25,6 @@
 #root {
   overflow: hidden;
 }
+.swal-popup {
+  z-index: 9999999999999999999;
+}

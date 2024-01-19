@@ -8,6 +8,7 @@ import emptyCart from "../../../../../public/cart/emptyCart.png";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
 import Swal from "sweetalert2";
+
 export default function CartCard({ ele, setOpenCloseSideBar }) {
   let [productCartData, setProductCartData] = useState([]);
   let navigate = useNavigate();
@@ -31,11 +32,13 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
         console.log(err?.message);
       });
   }
-  function minusAddToCart(pId, id, isRemove) {
+  function minusAddToCart(pId, id) {
+    console.log(": minusAddToCart -> id", id);
+    console.log(": minusAddToCart -> pId", pId);
     axios({
       method: "put",
       url: `${BE_URL}/cart/update`,
-      data: { productId: pId, _id: id, isRemove: isRemove },
+      data: { _id: id, productId: pId },
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -48,31 +51,21 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
         console.log(err?.message);
       });
   }
-  function deleteProductCart(id) {
+  function deleteProductCart(id, pId) {
     axios({
       method: "delete",
       url: `${BE_URL}/cart/delete/${id}`,
+      data: { _id: id, productId: pId, isRemove: true },
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
     })
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "product Deleted",
-          showConfirmButton: true,
-          timer: 800,
-        });
+        dispatch(fetchCartData());
       })
       .catch((err) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: err.message,
-          showConfirmButton: true,
-        });
+        dispatch(fetchCartData());
       });
   }
   return (
@@ -96,7 +89,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
           return (
             <div
               key={ele?.productId?._id}
-              className=" d-flex mt-3 mb-3 me-4 ms-4 rounded"
+              className="filledCart d-flex mt-3 mb-3 me-4 ms-4 rounded"
               style={{ border: "1px solid #b2afaf" }}
             >
               <div
@@ -134,7 +127,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
                         cursor: "pointer",
                       }}
                       onClick={() =>
-                        minusAddToCart(ele?.productId?._id, ele?._id, 0)
+                        minusAddToCart(ele?.productId?._id, ele?._id)
                       }
                     >
                       -
@@ -165,7 +158,9 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
                       cursor: "pointer",
                       border: "0.2px solid #b2afaf",
                     }}
-                    onClick={() => deleteProductCart(ele?._id)}
+                    onClick={() =>
+                      deleteProductCart(ele?.productId?._id, ele?._id)
+                    }
                   >
                     <Delete />
                   </div>
