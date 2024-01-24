@@ -7,7 +7,6 @@ import { Delete } from "@mui/icons-material";
 import emptyCart from "../../../../../public/cart/emptyCart.png";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
-import Swal from "sweetalert2";
 
 export default function CartCard({ ele, setOpenCloseSideBar }) {
   let [productCartData, setProductCartData] = useState([]);
