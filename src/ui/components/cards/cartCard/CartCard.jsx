@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BE_URL } from "../../../../config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCartData } from "../../../../redux/features/cart";
 import { Delete } from "@mui/icons-material";
 import emptyCart from "../../../../../public/cart/emptyCart.png";
@@ -31,13 +31,17 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
         console.log(err?.message);
       });
   }
-  function minusAddToCart(pId, id) {
-    console.log(": minusAddToCart -> id", id);
-    console.log(": minusAddToCart -> pId", pId);
+  let cardId = useSelector((state) => state?.cartSlice?.cartId);
+
+  function minusAddToCart(pId, count) {
     axios({
       method: "put",
       url: `${BE_URL}/cart/update`,
-      data: { _id: id, productId: pId },
+      data: {
+        _id: cardId,
+        productId: pId,
+        isRemove: count == 1 ? true : false,
+      },
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -50,11 +54,15 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
         console.log(err?.message);
       });
   }
-  function deleteProductCart(id, pId) {
+  function deleteProductCart(pId) {
     axios({
-      method: "delete",
-      url: `${BE_URL}/cart/delete/${id}`,
-      data: { _id: id, productId: pId, isRemove: true },
+      method: "put",
+      url: `${BE_URL}/cart/update`,
+      data: {
+        _id: cardId,
+        productId: pId,
+        isRemove: true,
+      },
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
@@ -64,7 +72,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
         dispatch(fetchCartData());
       })
       .catch((err) => {
-        dispatch(fetchCartData());
+        console.log(err?.message);
       });
   }
   return (
@@ -126,7 +134,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
                         cursor: "pointer",
                       }}
                       onClick={() =>
-                        minusAddToCart(ele?.productId?._id, ele?._id)
+                        minusAddToCart(ele?.productId?._id, ele?.count)
                       }
                     >
                       -
@@ -157,9 +165,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
                       cursor: "pointer",
                       border: "0.2px solid #b2afaf",
                     }}
-                    onClick={() =>
-                      deleteProductCart(ele?.productId?._id, ele?._id)
-                    }
+                    onClick={() => deleteProductCart(ele?.productId?._id)}
                   >
                     <Delete />
                   </div>

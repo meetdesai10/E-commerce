@@ -11,7 +11,7 @@ export const fetchCartData = createAsyncThunk("cartdata", async () => {
     },
   })
     .then((res) => {
-      return res?.data?.data;
+      return res?.data;
     })
     .catch((error) => {
       console.log("cartData error", error.message);
@@ -21,6 +21,7 @@ const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
     data: [],
+    cartId: "",
     pending: "false",
     error: "false",
   },
@@ -28,7 +29,8 @@ const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCartData.fulfilled, (state, action) => {
-        state.data = action.payload;
+        state.data = action?.payload?.data;
+        state.cartId = action?.payload?.cartId;
         state.pending = false;
         state.error = false;
       })
