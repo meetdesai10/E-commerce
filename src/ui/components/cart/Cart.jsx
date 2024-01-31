@@ -13,7 +13,7 @@ export default function Cart() {
     if (openSideCloseBar) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto"; // Reset overflow to default when sidebar is closed
+      document.body.style.overflow = "auto";
     }
     return () => {
       document.body.style.overflow = "auto";
