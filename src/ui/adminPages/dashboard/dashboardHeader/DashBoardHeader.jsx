@@ -1,6 +1,6 @@
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import React from "react";
-import "./DashBoardHeader.css";
+import "./dashboardHeader.css";
 
 export default function DashBoardHeader() {
   return (
