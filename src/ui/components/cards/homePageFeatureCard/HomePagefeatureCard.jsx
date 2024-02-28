@@ -1,5 +1,5 @@
 import React from "react";
-import "./homePagefeatureCard.css";
+import "./homePagefeaturecard.css";
 import { AddShoppingCart, FavoriteBorder } from "@mui/icons-material";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
