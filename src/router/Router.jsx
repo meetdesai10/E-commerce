@@ -14,8 +14,8 @@ import AdminProfile from "../ui/adminPages/adminProfile/AdminProfile";
 import { useSelector } from "react-redux";
 import AuthRouter from "./AuthRouter";
 import Error from "../ui/pages/error/Error";
-import AdminProductDetailPage from "../ui/adminPages/adminProductDetailPage/adminProductDetailPage";
 import PublicProductDetailPage from "../ui/pages/product/publicProductDetaildPage/PublicProductDetailPage";
+import AdminProductDetailPage from "../ui/adminPages/adminProductDetailPage/adminProductDetailPage";
 export default function Router() {
   const userData = useSelector((state) => state.logRegSlice);
   const productsRef = useRef();
