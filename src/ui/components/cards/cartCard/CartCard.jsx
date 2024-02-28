@@ -77,7 +77,7 @@ export default function CartCard({ ele, setOpenCloseSideBar }) {
   }
   return (
     <>
-      {!productCartData ? (
+      {productCartData?.length == 0 ? (
         <div className="emptyCart w-100 h-100 d-flex flex-column justify-content-center align-items-center">
           <img src={emptyCart} alt="" />
           <h4>Your cart is feeling lonely</h4>

@@ -128,19 +128,7 @@ export default function Header({ toggle, modal, logReg, setLogReg }) {
               >
                 Logout
               </Button>
-              <NavLink
-                style={{ color: "black" }}
-                to={
-                  userData?.user?.userType == "admin"
-                    ? "/adminProfile"
-                    : "/profile"
-                }
-              >
-                <AccountBox
-                  style={{ height: "40px", width: "40px", cursor: "pointer" }}
-                />
-              </NavLink>
-              <Cart />
+              {userData?.user?.userType === "customer" ? <Cart /> : null}
             </div>
           ) : (
             <Button
