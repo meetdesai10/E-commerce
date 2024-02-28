@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import "./contact.css";
+import "./Contact.css";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 import Footer from "../../components/footer/Footer";
 export default function Contact() {
