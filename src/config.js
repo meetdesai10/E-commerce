@@ -1,5 +1,2 @@
 export const BE_URL = "http://localhost:9999";
-
-let arr = "meet";
-
-console.log(arr.includes("m"));
+// export const BE_URL = "https://titanbackend.onrender.com";

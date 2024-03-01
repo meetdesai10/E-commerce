@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../redux/features/logReg";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import Cart from "../cart/Cart"
 export default function Header({ toggle, modal, logReg, setLogReg }) {
   let dispatch = useDispatch();
   let navigate = useNavigate();
